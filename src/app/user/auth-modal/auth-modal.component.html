@@ -1,0 +1,10 @@
+<app-modal modalID="auth" class1="mt-2 inset-0 fixed flex items-center justify-center" 
+    class2="absolute inset-0 bg-gray-800 opacity-75">
+    <div class="transform">
+        <div class="flex items-center justify-center mb-6">
+            <p class="text-5xl flex items-center justify-center font-bold italic p-4 pb-5 w-[55px] h-[55px] rounded-full bg-[#209CEE] text-white">B</p>
+        </div>
+        <app-login *ngIf="authModalService.getOpenLogin()"></app-login>
+        <app-register *ngIf="authModalService.getRegistration()"></app-register>
+    </div>
+</app-modal>

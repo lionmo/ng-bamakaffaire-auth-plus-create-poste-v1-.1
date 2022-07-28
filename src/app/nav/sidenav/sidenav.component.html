@@ -1,0 +1,53 @@
+  
+  <app-modal modalID="sidenav" class1="fixed left-0 top-20"
+    class2="absolute inset-0 bg-gray-800 opacity-75">
+    <div class="bg-gray-100  h-screen p-2 w-fit transform z-10">
+      <ul class="text-xl font-medium text-black">
+        <li class="pb-3 hover:bg-gray-200">
+          <a routerLink="/accueil" class="inline-flex" (click)="modal.toggleModal('sidenav')">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Accueil
+          </a>
+        </li>
+        <li class="pb-3 hover:bg-gray-200">
+          <a routerLink="/categories" class="inline-flex" (click)="modal.toggleModal('sidenav')">  Categories</a>
+        </li>
+        <li class="pb-3 hover:bg-gray-200">
+          <a routerLink="/poster" class="inine-flex">
+            Publier
+          </a>
+        </li>
+        <li class="pb-3 hover:bg-gray-200">
+          <a routerLink="/nouscontacter" class="inine-flex" (click)="modal.toggleModal('sidenav')">Nous Contacter</a>
+        </li>
+        <li class="pb-3 hover:bg-gray-200" *ngIf="!(authService.isAuthenticated$ | async); else logout"> 
+          <a href="#" class="inline-flex" (click)="[modal.toggleModal('sidenav'), openModal($event)]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+            </svg>
+            Se connecter/S'inscrire
+          </a>
+        </li>
+        <ng-template #logout>
+          <li class="pb-3 hover:bg-gray-200" hidden>
+            <a href="#" class="inline-flex" (click)="[preventDefault($event),modal.toggleModal('sidenav'),authService.logout()]">
+              <img src="../../../assets/static-images/profile.png" alt="" 
+              class="rounded-full w-7 h-7" >
+              Profile
+            </a>
+          </li>
+          <li class="pb-3 hover:bg-gray-200">
+            <a href="#" class="inline-flex" (click)="[preventDefault($event),modal.toggleModal('sidenav'),authService.logout()]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Logout
+            </a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </app-modal>
+  

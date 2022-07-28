@@ -1,0 +1,67 @@
+<div 
+    class="p-2 mt-4 grid grid-cols-1 md:grid-cols-2 bg-slate-50 w-full sm:max-w-[90%] gap-2 mx-auto">
+    <div class="w-full sm:max-w-[600px] h-[600px]">
+        <img [src]="biggerImg" alt=""
+            class="m-auto h-[80%] w-full object-contain"
+            (click)="modal.toggleModal('singleAd')">
+        <div class="grid grid-cols-4">
+            <span>
+                <img *ngIf="post.img1?.imgMedium && post.img1?.imgMedium !== ''" 
+                src="{{post.img1?.imgMedium}}" alt=""
+                (click)="changeNormalImg($event)"
+                class="p-2 object-cover h-[118px] w-[100%]">
+                <img id="normalSize" src="{{post.img1?.imgNormal}}" alt="" 
+                class=" normalSize hidden">
+                <img id="BigSize" src="{{post.img1?.imgBig}}" alt="" 
+                class="bigSize hidden">
+            </span>
+            <span>
+                <img *ngIf="post.img2?.imgMedium && post.img2?.imgMedium !== ''"
+                src="{{post.img2?.imgMedium}}" alt=""
+                (click)="changeNormalImg($event)"
+                class="p-2 h-[118px] w-[100%] object-cover">
+                <img id="normalSize" src="{{post.img2?.imgNormal}}" alt="" 
+                class=" normalSize hidden">
+                <img id="BigSize" src="{{post.img2?.imgBig}}" alt="" 
+                class="bigSize hidden">
+            </span>
+            <span>
+                <img *ngIf="post.img3?.imgMedium && post.img3?.imgMedium !== ''"
+                src="{{post.img3?.imgMedium}}" alt=""
+                (click)="changeNormalImg($event)"
+                class="p-2 h-[118px] max-h-[118px] object-cover w-[100%]">
+                <img id="normalSize" src="{{post.img3?.imgNormal}}" alt="" 
+                class=" normalSize hidden">
+                <img id="BigSize" src="{{post.img3?.imgBig}}" alt="" 
+                class="bigSize hidden">
+            </span>
+                
+            <span>
+                <img *ngIf="post.img4?.imgMedium && post.img4?.imgMedium !== ''"
+                src="{{post.img4?.imgMedium}}" alt=""
+                (click)="changeNormalImg($event)"
+                class="p-2 h-[118px] object-cover w-[100%]">
+                <img id="normalSize" src="{{post.img4?.imgNormal}}" alt="" 
+                class=" normalSize hidden">
+                <img id="BigSize" src="{{post.img4?.imgBig}}" alt="" 
+                class="bigSize hidden">
+            </span>
+        </div>
+    </div>
+    <div class="p-4 my-auto border-4 border-[#209CEE] rounded-lg outline outline-2">
+        <h2 class="mb-4">{{post.titre | titlecase}}</h2>
+        <p 
+            class="bg-slate-200 rounded-lg p-2 h-[70%] outline outline-2">{{post.corps}}</p>
+        
+        <p class="font-bold text-md italic p-2"><span>Prix:</span> {{ post.prix | mask: 'separator':','}} FCFA</p>
+        <p class="font-bold text-md italic p-2">Tel: 78984944</p>
+        
+    </div>
+</div>
+
+<app-modal modalID="singleAd" 
+    class1="pt-2 inset-0 absolute flex items-center justify-center"
+    class2="m-auto absolute inset-0 bg-black"> 
+    <img [src]="biggerImg"
+        class="transform">
+</app-modal>

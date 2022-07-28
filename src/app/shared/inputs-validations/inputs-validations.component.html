@@ -1,0 +1,32 @@
+<input matInput [type]="type" 
+    [placeholder]="placeholder" 
+    [formControl]="control"
+    [mask]="format"
+    class="w-full bg-slate-300 h-12 rounded-lg">
+<ng-container *ngIf="control.dirty">
+    <p *ngIf="control.errors?.['required']" class="text-red-400">
+    Champ
+     {{ blank }}
+    ne peut pas etre vide.
+    </p>
+    <p *ngIf="control.errors?.['minlength']" class="text-red-400">
+        Le
+        {{ blank }}
+        ne peut pas etre moins de
+        {{ control.errors?.['minlength']?.requiredLength}} 
+        characters.
+    </p>
+    <p *ngIf="control.errors?.['maxlength']" class="text-red-400">
+    Champ 
+    {{ blank }} 
+    ne peut pas etre plus de 
+    {{ control.errors?.['maxlength']?.requiredLength}} 
+    characters.
+    </p>
+    <p *ngIf="control.errors?.['email']" class="text-red-400">
+        Adresse email invalide
+    </p>
+    <p *ngIf="control.errors?.['min']" class="text-red-400">
+        Le {{blank}} ne peut pas etre infereur a {{ control.errors?.['min'].min}}
+    </p>
+</ng-container>

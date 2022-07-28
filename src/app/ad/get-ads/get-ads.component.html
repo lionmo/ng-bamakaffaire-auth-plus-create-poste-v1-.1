@@ -1,0 +1,17 @@
+<div class="mt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+    <div class="h-[400px] w-full sm:w-[400px] border-2 border-gray-100 bg-gray-50 hover:bg-gray-200 hover:scale-200 transition-all p-2 rounded-lg bg-white" 
+        *ngFor="let post of adService.categoriesId.get(id).postsArray">
+        <a [routerLink]="['/', 'annonce', post._id]">
+            <img 
+            src="{{post.img1.imgMedium}}" alt="" 
+            class="h-[70%] w-full object-cover">
+            <div class="text-center my-2">
+                <Strong>{{post.titre | titlecase}}</Strong>
+                <p class="text-slate-500">{{post?.corps?.substring(0,50)}}
+                    <span *ngIf="post?.corps?.length > 50">...</span></p>
+                <p class="font-bold text-lg italic my-2">{{post.prix | mask: 'separator':'.'}} FCFA</p>
+
+            </div>
+        </a>
+    </div>
+  </div>

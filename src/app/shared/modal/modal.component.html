@@ -1,0 +1,10 @@
+<div [class]="class1" [ngClass]="{hidden: !modal.isModalOpen(modalID)}">
+    <!--Very important Modal BG overlay-->
+    <div class="fixed inset-0 transition-opacity" (click)="closeModal()">
+        <div [class]="class2"></div>
+      </div>
+    
+    <div>
+        <ng-content></ng-content>
+    </div>
+</div>

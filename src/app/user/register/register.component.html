@@ -1,0 +1,42 @@
+<app-alert *ngIf="showAlert" [color]="alertColor" >
+  {{ alertMsg}}
+</app-alert>
+
+<!--Registration page-->
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="register()">
+  <div class="w-96 bg-white rounded-lg p-6">
+    <div class="mb-3">
+      <app-input-label labelName="Nom"></app-input-label>
+      <app-inputs-validations type="text" 
+      placeholder="Entree votre nom" [control]="nom" blank="nom"></app-inputs-validations>
+    </div>
+    <div class="mb-3">
+      <app-input-label labelName="Prenom"></app-input-label>
+      <app-inputs-validations type="text" 
+      placeholder="Entree votre prenom" [control]="prenom" blank="prenom"></app-inputs-validations>
+    </div>
+    <div class="mb-3">
+      <app-input-label labelName="Email"></app-input-label>
+      <app-inputs-validations type="email" 
+      placeholder="Entree votre addresse email" [control]="email" blank="email"></app-inputs-validations>
+    </div>
+    <div class="mb-3">
+      <app-input-label labelName="Mot de passe"></app-input-label>
+      <app-inputs-validations type="password" 
+      placeholder="Entree le mot de passe" blank="mot de passe"
+      [control]="motdepasse"></app-inputs-validations>
+    </div>
+    Ou
+    <div class="underline decoration-blue-500">
+      <a href="#" class="mr-4" (click)="tooggleSignin($event)">Se connecter</a>
+    </div><br>
+    <button 
+      class="block w-full bg-blue-600 text-white py-1.5 px-3 rounded transition
+      hover:bg-blue-700 disabled:opacity-50 disabled:bg-blue-500 " 
+      [disabled]="registerForm.invalid || inSubmission">
+      S'inscrire
+    </button>
+  </div>
+  </form>
